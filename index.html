@@ -44,6 +44,11 @@
       .check-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 12px; }
       .check-grid .choice { min-height: 36px; }
       .route-instruction { margin: 2px 0 1px; color: #15263a; font-size: 1em; }
+      .sector-nav { display: flex; gap: 7px; margin: 0 0 8px; overflow-x: auto; scrollbar-width: none; }
+      .sector-nav::-webkit-scrollbar { display: none; }
+      .sector-tab { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; border: 1px solid #cad7df; border-radius: 9px; background: #fff; color: #36546a; font: 700 12px "Helvetica Neue", Helvetica, Arial, sans-serif; }
+      .sector-tab[aria-selected="true"] { border-color: #138c82; background: #e5f5f3; color: #0c625c; }
+      .sector-panel[hidden] { display: none; }
       .field-label { display: block; margin: 0 0 7px; color: #17334a; font-size: .9em; font-weight: 700; }
       .checkline { display: flex; align-items: center; gap: 10px; min-height: 28px; margin-bottom: 8px; }
       .checkline label { color: #17334a; font-size: 1em; font-weight: 750; }
@@ -91,53 +96,10 @@
         <div class="field-card"><div class="choice-row"><strong>MEL</strong><div class="choice-row yes-no" role="radiogroup" aria-label="MEL status"><label class="choice"><input type="radio" name="mel-status" value="YES" data-save="mel-status">YES</label><label class="choice"><input type="radio" name="mel-status" value="NO" data-save="mel-status">NO</label></div></div></div>
         <h3 class="group-title">Briefing items</h3>
         <div class="field-card"><div class="field-label">Route</div><p class="route-instruction">check Mission+ with FD Pro</p></div>
-        <div class="field-card check-card">
-          <div class="field-label">Weather</div>
-          <div class="check-grid">
-            <label class="choice"><input type="checkbox" data-save="weather-departure">Departure</label>
-            <label class="choice"><input type="checkbox" data-save="weather-climb">Climb</label>
-            <label class="choice"><input type="checkbox" data-save="weather-cruise">Cruise</label>
-            <label class="choice"><input type="checkbox" data-save="weather-descent">Descent</label>
-            <label class="choice"><input type="checkbox" data-save="weather-destination">Destination</label>
-          </div>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="notam-check" type="checkbox" data-save="notam-check"><label for="notam-check">NOTAM checked</label></div>
-          <textarea aria-label="NOTAM notes" data-save="notam-notes"></textarea>
-        </div>
-        <h3 class="group-title">Company Procedures</h3>
-        <div class="field-card check-card check-only"><div class="checkline"><input id="pbn" type="checkbox" data-save="pbn"><label for="pbn">PBN</label></div></div>
-        <div class="field-card check-card check-only"><div class="checkline"><input id="rvsm" type="checkbox" data-save="rvsm"><label for="rvsm">RVSM</label></div></div>
-        <div class="field-card check-card check-only"><div class="checkline"><input id="ipa" type="checkbox" data-save="independent-parallel-approach"><label for="ipa">Independent Parallel Approach</label></div></div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="company-others" type="checkbox" data-save="company-others"><label for="company-others">Others</label></div>
-          <textarea aria-label="Other company procedures" data-save="company-others-notes"></textarea>
-        </div>
-        <h3 class="group-title">Load &amp; Fuel</h3>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="pax" type="checkbox" data-save="pax"><label for="pax">PAX</label></div>
-          <textarea aria-label="PAX notes" data-save="pax-notes"></textarea>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="weight-limit" type="checkbox" data-save="weight-limit"><label for="weight-limit">Weight Limit</label></div>
-          <textarea aria-label="Weight Limit notes" data-save="weight-limit-notes"></textarea>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="underload" type="checkbox" data-save="underload"><label for="underload">Underload</label></div>
-          <textarea aria-label="Underload notes" data-save="underload-notes"></textarea>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="refueling" type="checkbox" data-save="refueling"><label for="refueling">Refueling</label></div>
-          <textarea aria-label="Refueling notes" data-save="refueling-notes"></textarea>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="to-fuel" type="checkbox" data-save="to-fuel"><label for="to-fuel">TO Fuel</label></div>
-          <textarea aria-label="TO Fuel notes" data-save="to-fuel-notes"></textarea>
-        </div>
-        <div class="field-card check-card">
-          <div class="checkline"><input id="ldg-fuel" type="checkbox" data-save="ldg-fuel"><label for="ldg-fuel">LDG Fuel</label></div>
-          <textarea aria-label="LDG Fuel notes" data-save="ldg-fuel-notes"></textarea>
-        </div>
+        <section class="sector-category" data-sector-category="weather"><h3 class="group-title">Weather</h3><div class="sector-nav" role="tablist" aria-label="Weather sectors"></div><div class="sector-panels"></div></section>
+        <section class="sector-category" data-sector-category="notam"><h3 class="group-title">NOTAM</h3><div class="sector-nav" role="tablist" aria-label="NOTAM sectors"></div><div class="sector-panels"></div></section>
+        <section class="sector-category" data-sector-category="company-procedures"><h3 class="group-title">Company Procedures</h3><div class="sector-nav" role="tablist" aria-label="Company Procedures sectors"></div><div class="sector-panels"></div></section>
+        <section class="sector-category" data-sector-category="load-fuel"><h3 class="group-title">Load &amp; Fuel</h3><div class="sector-nav" role="tablist" aria-label="Load and Fuel sectors"></div><div class="sector-panels"></div></section>
         <div class="save-status" id="save-status" aria-live="polite">Notes are saved on this device.</div>
       </section>
     </main>
@@ -158,7 +120,7 @@
       setSize(size);
 
       const status = document.querySelector('#save-status');
-      document.querySelectorAll('[data-save]').forEach(field => {
+      function bindSavedField(field) {
         const key = `a320-briefing-${field.dataset.save}`;
         const stored = localStorage.getItem(key);
         if (stored !== null) {
@@ -172,7 +134,100 @@
           status.textContent = 'Saved on this device.';
         };
         field.addEventListener(field.type === 'checkbox' || field.type === 'radio' ? 'change' : 'input', save);
-      });
+      }
+      document.querySelectorAll('[data-save]').forEach(bindSavedField);
+
+      const sectorsKey = 'a320-briefing-sectors';
+      let sectorCount = Number(localStorage.getItem(sectorsKey)) || 1;
+      if (sectorCount < 1 || sectorCount > 4) sectorCount = 1;
+      document.querySelector(`input[name="sectors"][value="${sectorCount}"]`).checked = true;
+      if (!localStorage.getItem(sectorsKey)) localStorage.setItem(sectorsKey, String(sectorCount));
+
+      const weatherItems = [
+        ['Departure', 'departure'], ['Climb', 'climb'], ['Cruise', 'cruise'],
+        ['Descent', 'descent'], ['Destination', 'destination']
+      ];
+      const companyItems = [
+        ['PBN', 'pbn'], ['RVSM', 'rvsm'], ['Independent Parallel Approach', 'independent-parallel-approach']
+      ];
+      const fuelItems = [
+        ['PAX', 'pax'], ['Weight Limit', 'weight-limit'], ['Underload', 'underload'],
+        ['Refueling', 'refueling'], ['TO Fuel', 'to-fuel'], ['LDG Fuel', 'ldg-fuel']
+      ];
+      function makeCheck(labelText, key) {
+        const label = document.createElement('label'); label.className = 'choice';
+        const input = document.createElement('input'); input.type = 'checkbox'; input.dataset.save = key;
+        label.append(input, document.createTextNode(labelText)); bindSavedField(input); return label;
+      }
+      function makeNotes(key, labelText) {
+        const area = document.createElement('textarea'); area.dataset.save = key;
+        area.setAttribute('aria-label', `${labelText} notes`); area.placeholder = 'Notes'; bindSavedField(area); return area;
+      }
+      function makeCheckCard(labelText, key, withNotes = true) {
+        const card = document.createElement('div'); card.className = 'field-card check-card';
+        const line = document.createElement('div'); line.className = 'checkline';
+        const input = document.createElement('input'); input.type = 'checkbox'; input.dataset.save = key;
+        const label = document.createElement('label'); label.textContent = labelText;
+        const id = key.replace(/[^a-z0-9]+/gi, '-'); input.id = id; label.htmlFor = id;
+        line.append(input, label); card.append(line); bindSavedField(input);
+        if (withNotes) card.append(makeNotes(`${key}-notes`, labelText));
+        return card;
+      }
+      function renderCategory(root, count) {
+        const category = root.dataset.sectorCategory;
+        const nav = root.querySelector('.sector-nav');
+        const panels = root.querySelector('.sector-panels');
+        let active = Number(root.dataset.activeSector) || 1;
+        if (active > count) active = 1;
+        root.dataset.activeSector = String(active);
+        nav.replaceChildren(); panels.replaceChildren();
+        for (let sector = 1; sector <= count; sector++) {
+          const panelId = `${category}-sector-${sector}`;
+          const tab = document.createElement('button');
+          tab.type = 'button'; tab.className = 'sector-tab'; tab.setAttribute('role', 'tab');
+          tab.setAttribute('aria-controls', panelId); tab.setAttribute('aria-selected', String(sector === active));
+          tab.textContent = `Sector ${sector}`;
+          const panel = document.createElement('div'); panel.className = 'sector-panel';
+          panel.id = panelId; panel.setAttribute('role', 'tabpanel'); panel.hidden = sector !== active;
+          const prefix = `${category}-sector-${sector}`;
+          if (category === 'weather') {
+            const card = document.createElement('div'); card.className = 'field-card';
+            const grid = document.createElement('div'); grid.className = 'check-grid';
+            weatherItems.forEach(([label, key]) => grid.append(makeCheck(label, `${prefix}-${key}`)));
+            card.append(grid); panel.append(card);
+          } else if (category === 'notam') {
+            const card = document.createElement('div'); card.className = 'field-card';
+            const area = makeNotes(`${prefix}-notes`, `NOTAM Sector ${sector}`);
+            area.placeholder = 'NOTAM notes'; card.append(area); panel.append(card);
+          } else if (category === 'company-procedures') {
+            const card = document.createElement('div'); card.className = 'field-card';
+            const grid = document.createElement('div'); grid.className = 'check-grid';
+            companyItems.forEach(([label, key]) => grid.append(makeCheck(label, `${prefix}-${key}`)));
+            card.append(grid); panel.append(card);
+            panel.append(makeCheckCard('Others', `${prefix}-others`));
+          } else if (category === 'load-fuel') {
+            fuelItems.forEach(([label, key]) => panel.append(makeCheckCard(label, `${prefix}-${key}`)));
+          }
+          tab.addEventListener('click', () => {
+            root.dataset.activeSector = String(sector);
+            nav.querySelectorAll('[role="tab"]').forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+            panels.querySelectorAll('[role="tabpanel"]').forEach(item => { item.hidden = item !== panel; });
+          });
+          nav.append(tab); panels.append(panel);
+        }
+      }
+      function renderSectorCategories(count) {
+        document.querySelectorAll('[data-sector-category]').forEach(root => renderCategory(root, count));
+      }
+      renderSectorCategories(sectorCount);
+      document.querySelectorAll('input[name="sectors"]').forEach(field => field.addEventListener('change', () => {
+        if (!field.checked) return;
+        sectorCount = Number(field.value);
+        localStorage.setItem(sectorsKey, String(sectorCount));
+        renderSectorCategories(sectorCount);
+        status.textContent = 'Saved on this device.';
+      }));
+
       document.querySelector('#clear-all').addEventListener('click', () => {
         if (!window.confirm('Clear all briefing data and start a new briefing?')) return;
         Object.keys(localStorage).filter(key => key.startsWith('a320-briefing-') && key !== 'a320-briefing-size').forEach(key => localStorage.removeItem(key));
@@ -180,6 +235,10 @@
           if (field.type === 'checkbox' || field.type === 'radio') field.checked = false;
           else field.value = '';
         });
+        sectorCount = 1;
+        document.querySelector('input[name="sectors"][value="1"]').checked = true;
+        localStorage.setItem(sectorsKey, '1');
+        renderSectorCategories(sectorCount);
         status.textContent = 'All briefing data cleared.';
       });
     </script>
