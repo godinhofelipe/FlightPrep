@@ -64,6 +64,8 @@
       .next-step::before, .next-step::after { content: ""; flex: 1; border-top: 1px dashed #9aabb8; }
       .technical-actions { margin-top: 9px; }
       .decision-card { margin-top: 16px; padding: 13px; border: 1px solid #d6e1e7; border-radius: 12px; background: #eef4f6; }
+      .fordec-list { margin: 8px 0 0; padding-left: 1.5em; }
+      .fordec-list li { padding: 4px 0 4px 4px; color: #17334a; }
       .field-label { display: block; margin: 0 0 7px; color: #17334a; font-size: .9em; font-weight: 700; }
       .checkline { display: flex; align-items: center; gap: 10px; min-height: 28px; margin-bottom: 8px; }
       .checkline label { color: #17334a; font-size: 1em; font-weight: 750; }
@@ -177,19 +179,19 @@
           <div class="dispatch-item"><span class="dispatch-label">1. Stop aircraft</span></div>
           <div class="dispatch-item"><span class="dispatch-label">2. Advise ATC</span></div>
           <div class="dispatch-item"><span class="dispatch-label">3. Any OEB?</span></div>
-          <div class="dispatch-item"><span class="dispatch-label">4. ECAM actions</span></div>
+          <div class="dispatch-item"><span class="dispatch-label">4. “ECAM actions”</span></div>
         </div>
         <div class="field-card" style="margin-top:10px">
-          <div class="dispatch-item"><span class="dispatch-label">5. Status, stop ECAM:</span></div>
+          <div class="dispatch-item"><span class="dispatch-label">5. “STATUS” / “Stop ECAM”</span></div>
           <div class="dispatch-sublist technical-actions">
             <div class="dispatch-item"><span class="dispatch-label">Normal checklist</span></div>
-            <div class="dispatch-item"><span class="dispatch-label">QRH reset</span></div>
+            <div class="dispatch-item"><span class="dispatch-label">System reset</span></div>
             <div class="dispatch-item"><span class="dispatch-label">If reset successful → continue</span></div>
             <div class="dispatch-item"><div class="dispatch-copy"><span class="dispatch-label">If reset not successful</span>
               <div class="dispatch-sublist">
-                <div class="dispatch-item"><span class="dispatch-label">Continue ECAM</span></div>
-                <div class="dispatch-item"><span class="dispatch-label">Read status</span></div>
-                <div class="dispatch-item"><span class="dispatch-label">ECAM actions completed</span></div>
+                <div class="dispatch-item"><span class="dispatch-label">“Continue ECAM”</span></div>
+                <div class="dispatch-item"><span class="dispatch-label">Read STATUS</span></div>
+                <div class="dispatch-item"><span class="dispatch-label">“ECAM actions completed”</span></div>
               </div>
             </div></div>
           </div>
@@ -218,12 +220,15 @@
         </div>
         <div class="next-step">NEXT STEP</div>
         <div class="decision-card">
-          <div class="dispatch-label">FACTS — OPTIONS — RISK &amp; BENEFITS</div>
-          <div class="dispatch-sublist">
-            <div class="dispatch-item"><span class="dispatch-label">DECIDE</span></div>
-            <div class="dispatch-item"><span class="dispatch-label">EXECUTE</span></div>
-            <div class="dispatch-item"><span class="dispatch-label">CHECK</span></div>
-          </div>
+          <div class="dispatch-label">FORDEC</div>
+          <ol class="fordec-list">
+            <li>Facts</li>
+            <li>Options</li>
+            <li>Risks &amp; Benefits</li>
+            <li>Decide</li>
+            <li>Execute</li>
+            <li>Check</li>
+          </ol>
         </div>
       </section>
     </main>
