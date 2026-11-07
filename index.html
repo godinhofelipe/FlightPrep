@@ -59,6 +59,10 @@
       .dispatch-sublist .dispatch-item { padding: 8px 9px; border-color: #edf0f2; background: #fbfcfd; }
       .dispatch-sublist .dispatch-label { font-size: .92em; font-weight: 650; }
       .dispatch-sublist .dispatch-detail { margin-top: 1px; }
+      .next-step { display: flex; align-items: center; gap: 10px; margin: 19px 0 10px; color: #3c6075; font-size: .78em; font-weight: 800; letter-spacing: .12em; }
+      .next-step::before, .next-step::after { content: ""; flex: 1; border-top: 1px dashed #9aabb8; }
+      .technical-actions { margin-top: 9px; }
+      .decision-card { margin-top: 16px; padding: 13px; border: 1px solid #d6e1e7; border-radius: 12px; background: #eef4f6; }
       .field-label { display: block; margin: 0 0 7px; color: #17334a; font-size: .9em; font-weight: 700; }
       .checkline { display: flex; align-items: center; gap: 10px; min-height: 28px; margin-bottom: 8px; }
       .checkline label { color: #17334a; font-size: 1em; font-weight: 750; }
@@ -87,6 +91,7 @@
       <nav role="tablist" aria-label="Flight phases">
         <button class="tab" id="tab-flight-preparation" type="button" role="tab" aria-selected="true" aria-controls="flight-preparation">FLIGHT PREPARATION</button>
         <button class="tab" id="tab-dispatch-briefing" type="button" role="tab" aria-selected="false" aria-controls="dispatch-briefing">DISPATCH BRIEFING</button>
+        <button class="tab" id="tab-technical-dispatch" type="button" role="tab" aria-selected="false" aria-controls="technical-dispatch">TECHNICAL DISPATCH</button>
       </nav>
     </header>
     <main>
@@ -163,6 +168,63 @@
           <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-documents"><span class="dispatch-copy"><span class="dispatch-label">Fuel sheet · LPT · BHRT · ATL · Security</span></span></label>
         </div>
         <div class="save-status" id="dispatch-save-status" aria-live="polite">Notes are saved on this device.</div>
+      </section>
+      <section id="technical-dispatch" role="tabpanel" aria-labelledby="tab-technical-dispatch" hidden>
+        <h2 class="phase-title">TECHNICAL DISPATCH</h2>
+        <h3 class="group-title">Initial actions</h3>
+        <div class="dispatch-list">
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-stop-aircraft"><span class="dispatch-copy"><span class="dispatch-label">1. Stop aircraft</span></span></label>
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-advise-atc"><span class="dispatch-copy"><span class="dispatch-label">2. Advise ATC</span></span></label>
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-any-oeb"><span class="dispatch-copy"><span class="dispatch-label">3. Any OEB?</span></span></label>
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-ecam-actions"><span class="dispatch-copy"><span class="dispatch-label">4. ECAM actions</span></span></label>
+        </div>
+        <div class="field-card" style="margin-top:10px">
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-status-stop-ecam"><span class="dispatch-copy"><span class="dispatch-label">5. Status, stop ECAM:</span></span></label>
+          <div class="dispatch-sublist technical-actions">
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-normal-checklist"><span class="dispatch-copy"><span class="dispatch-label">Normal checklist</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-qrh-reset"><span class="dispatch-copy"><span class="dispatch-label">QRH reset</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-reset-successful"><span class="dispatch-copy"><span class="dispatch-label">If reset successful → continue</span></span></label>
+            <div class="dispatch-item"><input id="reset-unsuccessful" type="checkbox" data-save="technical-dispatch-reset-unsuccessful"><div class="dispatch-copy"><label class="dispatch-label" for="reset-unsuccessful">If reset not successful</label>
+              <div class="dispatch-sublist">
+                <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-continue-ecam"><span class="dispatch-copy"><span class="dispatch-label">Continue ECAM</span></span></label>
+                <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-read-status"><span class="dispatch-copy"><span class="dispatch-label">Read status</span></span></label>
+                <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-ecam-completed"><span class="dispatch-copy"><span class="dispatch-label">ECAM actions completed</span></span></label>
+              </div>
+            </div></div>
+          </div>
+        </div>
+        <div class="next-step">NEXT STEP</div>
+        <div class="dispatch-list">
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-qrh-abnormal"><span class="dispatch-copy"><span class="dispatch-label">5. QRH abnormal procedure?</span></span></label>
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-fcom-abnormal"><span class="dispatch-copy"><span class="dispatch-label">6. FCOM abnormal procedure?</span></span></label>
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-mel-entries"><span class="dispatch-copy"><span class="dispatch-label">7. Request MEL (E) entries</span></span></label>
+        </div>
+        <div class="field-card" style="margin-top:10px">
+          <div class="dispatch-label">8. Depending on MEL action:</div>
+          <div class="dispatch-sublist">
+            <label class="dispatch-item"><input type="radio" name="technical-dispatch-mel-action" value="M" data-save="technical-dispatch-mel-action"><span class="dispatch-copy"><span class="dispatch-label">If (M) action, go back to gate</span></span></label>
+            <label class="dispatch-item"><input type="radio" name="technical-dispatch-mel-action" value="O" data-save="technical-dispatch-mel-action"><span class="dispatch-copy"><span class="dispatch-label">If (O) action, could continue</span></span></label>
+          </div>
+        </div>
+        <div class="next-step">NEXT STEP</div>
+        <div class="field-card">
+          <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-contact-mcc"><span class="dispatch-copy"><span class="dispatch-label">9. Contact MCC:</span></span></label>
+          <div class="dispatch-sublist">
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-report-failure"><span class="dispatch-copy"><span class="dispatch-label">Report failure</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-ask-history"><span class="dispatch-copy"><span class="dispatch-label">Ask about history</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-ask-advice"><span class="dispatch-copy"><span class="dispatch-label">Ask for advise</span></span></label>
+          </div>
+        </div>
+        <div class="next-step">NEXT STEP</div>
+        <div class="decision-card">
+          <div class="dispatch-label">FACTS — OPTIONS — RISK &amp; BENEFITS</div>
+          <div class="dispatch-sublist">
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-decide"><span class="dispatch-copy"><span class="dispatch-label">DECIDE</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-execute"><span class="dispatch-copy"><span class="dispatch-label">EXECUTE</span></span></label>
+            <label class="dispatch-item"><input type="checkbox" data-save="technical-dispatch-check"><span class="dispatch-copy"><span class="dispatch-label">CHECK</span></span></label>
+          </div>
+        </div>
+        <div class="save-status" id="technical-save-status" aria-live="polite">Notes are saved on this device.</div>
       </section>
     </main>
     <footer>Your notes stay in this browser on this device.</footer>
