@@ -1,6 +1,6 @@
 {
-  "name": "A320 Technical Questions",
-  "short_name": "A320 Questions",
+  "name": "A320 Flight Briefing",
+  "short_name": "Flight Briefing",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
