@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
-  <rect width="180" height="180" rx="38" fill="#10243a"/>
-  <path d="M90 27 145 52v38c0 34-22 56-55 68-33-12-55-34-55-68V52z" fill="#20b6a8"/>
-  <path d="m51 96 39-24 39 24-39 9z" fill="#10243a"/>
-  <path d="M88 101h5v29h-5z" fill="#10243a"/>
-  <text x="90" y="61" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" font-weight="700" fill="#10243a">A320</text>
-</svg>
