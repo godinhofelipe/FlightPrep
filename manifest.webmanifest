@@ -1,0 +1,12 @@
+{
+  "name": "A320 Technical Questions",
+  "short_name": "A320 Questions",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10243a",
+  "theme_color": "#10243a",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
