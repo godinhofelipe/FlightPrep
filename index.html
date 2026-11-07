@@ -52,6 +52,7 @@
       .dispatch-list { display: grid; gap: 8px; }
       .dispatch-item { display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: start; gap: 9px; padding: 11px 12px; border: 1px solid #e0e6eb; border-radius: 12px; background: #fff; }
       #technical-dispatch .dispatch-item { grid-template-columns: minmax(0, 1fr); }
+      #dispatch-briefing .dispatch-item { grid-template-columns: minmax(0, 1fr); }
       .dispatch-item > input { width: 21px; height: 21px; margin: 2px 0 0; accent-color: #138c82; }
       .dispatch-copy { min-width: 0; }
       .dispatch-label { display: block; color: #17334a; font-weight: 700; }
@@ -125,52 +126,51 @@
         <h2 class="phase-title">DISPATCH BRIEFING</h2>
         <h3 class="group-title">Dispatch package</h3>
         <div class="dispatch-list">
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-ipad-update"><span class="dispatch-copy"><span class="dispatch-label">iPad charge, EFB, FD Pro &amp; Orlando up to date</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-flight-plan-validity"><span class="dispatch-copy"><span class="dispatch-label">Flight plan</span><span class="dispatch-detail">Check validity</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-crew-details"><span class="dispatch-copy"><span class="dispatch-label">Crew details</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-aircraft-status"><span class="dispatch-copy"><span class="dispatch-label">A/C status</span><span class="dispatch-detail">MEL / CDL</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-qrh-oeb"><span class="dispatch-copy"><span class="dispatch-label">eQRH → OEB</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-flight-details"><span class="dispatch-copy"><span class="dispatch-label">Flight details</span><span class="dispatch-detail">TO / FROM / ALTN · flying time + block time</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-fms-init"><span class="dispatch-copy"><span class="dispatch-label">FMS INIT</span><span class="dispatch-detail">Routing + ALTN routing (route NOTAMs)</span></span></label>
-          <div class="dispatch-item"><input id="dispatch-weather" type="checkbox" data-save="dispatch-weather"><div class="dispatch-copy"><label class="dispatch-label" for="dispatch-weather">Weather - FD Pro</label>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">iPad charge, EFB, FD Pro &amp; Orlando up to date</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Flight plan</span><span class="dispatch-detail">Check validity</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Crew details</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">A/C status</span><span class="dispatch-detail">MEL / CDL</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">eQRH → OEB</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Flight details</span><span class="dispatch-detail">TO / FROM / ALTN · flying time + block time</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">FMS INIT</span><span class="dispatch-detail">Routing + ALTN routing (route NOTAMs)</span></span></div>
+          <div class="dispatch-item"><div class="dispatch-copy"><span class="dispatch-label">Weather - FD Pro</span>
             <div class="dispatch-sublist">
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-wx-dep"><span class="dispatch-copy"><span class="dispatch-label">DEP</span><span class="dispatch-detail">Current WX + expected RWY in use</span></span></label>
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-wx-dest"><span class="dispatch-copy"><span class="dispatch-label">DEST</span><span class="dispatch-detail">Weather at arrival + expected RWY in use</span></span></label>
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-wx-altn"><span class="dispatch-copy"><span class="dispatch-label">ALTN</span><span class="dispatch-detail">Weather at arrival + expected RWY in use</span></span></label>
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-icing-clouds"><span class="dispatch-copy"><span class="dispatch-label">Icing clouds</span></span></label>
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turbulence"><span class="dispatch-copy"><span class="dispatch-label">Turbulence areas</span></span></label>
-              <label class="dispatch-item"><input type="checkbox" data-save="dispatch-shear-factor"><span class="dispatch-copy"><span class="dispatch-label">Shear factor</span><span class="dispatch-detail">In-flight enroute information</span></span></label>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">DEP</span><span class="dispatch-detail">Current WX + expected RWY in use</span></span></div>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">DEST</span><span class="dispatch-detail">Weather at arrival + expected RWY in use</span></span></div>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">ALTN</span><span class="dispatch-detail">Weather at arrival + expected RWY in use</span></span></div>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Icing clouds</span></span></div>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Turbulence areas</span></span></div>
+              <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Shear factor</span><span class="dispatch-detail">In-flight enroute information</span></span></div>
             </div>
           </div></div>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-notams"><span class="dispatch-copy"><span class="dispatch-label">NOTAMs</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-paper-flight-plan"><span class="dispatch-copy"><span class="dispatch-label">Paper Flight Plan</span><span class="dispatch-detail">Dispatch remarks, fuel time matches the calculation</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-load-fuel"><span class="dispatch-copy"><span class="dispatch-label">Load &amp; Fuel</span><span class="dispatch-detail">Discuss</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-release"><span class="dispatch-copy"><span class="dispatch-label">Dispatch Release</span><span class="dispatch-detail">Sign</span></span></label>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">NOTAMs</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Paper Flight Plan</span><span class="dispatch-detail">Dispatch remarks, fuel time matches the calculation</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Load &amp; Fuel</span><span class="dispatch-detail">Discuss</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Dispatch Release</span><span class="dispatch-detail">Sign</span></span></div>
         </div>
         <h3 class="group-title">Performance calc @ Dispatch · paper flight plan</h3>
         <div class="dispatch-list">
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-takeoff-calc"><span class="dispatch-copy"><span class="dispatch-label">T/O calculation</span><span class="dispatch-detail">ERP runway as per winds · take screenshots of 3 pages</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-landing-calc"><span class="dispatch-copy"><span class="dispatch-label">LDG calculation @ Destination</span><span class="dispatch-detail">ERP runway in Dispatch tab · screenshot of first page: LDG distance available + stop margin</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-inflight-plan"><span class="dispatch-copy"><span class="dispatch-label">In-flight plan mode</span><span class="dispatch-detail">Use INIT A/B details · air distance and time screenshots · FLAPS → landing</span></span></label>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">T/O calculation</span><span class="dispatch-detail">ERP runway as per winds · take screenshots of 3 pages</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">LDG calculation @ Destination</span><span class="dispatch-detail">ERP runway in Dispatch tab · screenshot of first page: LDG distance available + stop margin</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">In-flight plan mode</span><span class="dispatch-detail">Use INIT A/B details · air distance and time screenshots · FLAPS → landing</span></span></div>
         </div>
         <h3 class="group-title">Parking</h3>
         <div class="dispatch-list">
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-checklist"><span class="dispatch-copy"><span class="dispatch-label">Park checklist</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-pm-fpl-twr"><span class="dispatch-copy"><span class="dispatch-label">PM = FPL + TWR</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-pf-atl"><span class="dispatch-copy"><span class="dispatch-label">PF = ATL</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-fuel-settings"><span class="dispatch-copy"><span class="dispatch-label">Fuel settings (PM / PF)</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-pf-flows"><span class="dispatch-copy"><span class="dispatch-label">PF = FLOWS / MCDU</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-parking-pm-atis"><span class="dispatch-copy"><span class="dispatch-label">PM = ATIS + ATC clearance</span></span></label>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Park checklist</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">PM = FPL + TWR</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">PF = ATL</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Fuel settings (PM / PF)</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">PF = FLOWS / MCDU</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">PM = ATIS + ATC clearance</span></span></div>
         </div>
         <h3 class="group-title">Turnaround</h3>
         <div class="dispatch-list">
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-ipad"><span class="dispatch-copy"><span class="dispatch-label">iPad</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-fuel-truck"><span class="dispatch-copy"><span class="dispatch-label">Fuel truck</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-lrt"><span class="dispatch-copy"><span class="dispatch-label">LRT figures</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-windshield"><span class="dispatch-copy"><span class="dispatch-label">Windshield cleaning</span></span></label>
-          <label class="dispatch-item"><input type="checkbox" data-save="dispatch-turnaround-documents"><span class="dispatch-copy"><span class="dispatch-label">Fuel sheet · LPT · BHRT · ATL · Security</span></span></label>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">iPad</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Fuel truck</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">LRT figures</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Windshield cleaning</span></span></div>
+          <div class="dispatch-item"><span class="dispatch-copy"><span class="dispatch-label">Fuel sheet · LPT · BHRT · ATL · Security</span></span></div>
         </div>
-        <div class="save-status" id="dispatch-save-status" aria-live="polite">Notes are saved on this device.</div>
       </section>
       <section id="technical-dispatch" role="tabpanel" aria-labelledby="tab-technical-dispatch" hidden>
         <h2 class="phase-title">TECHNICAL DISPATCH</h2>
